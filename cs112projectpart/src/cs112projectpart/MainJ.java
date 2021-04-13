@@ -29,7 +29,8 @@ public class MainJ {
 	
 	contentPane.add(new JPanel());
 	
-	contentPane.add(new JButton(""));
+	contentPane.add(new JButton("Accuracy:  "));
+	 contentPane.add(new JButton("Prescision:  "));
 	//JLabel lab1 = new JLabel(null, getAccuracy() );
 	myFrame.setLayout(new GridLayout(2,2));
 	
