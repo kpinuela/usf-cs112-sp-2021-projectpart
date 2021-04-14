@@ -43,27 +43,6 @@ public class MainJ {
 
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
 	public static void main(String[] args) {
 		ArrayList<DataPoint> dpReadData= new ArrayList<DataPoint>();
 		DummyPredictor dp = new DummyPredictor();
@@ -76,7 +55,7 @@ public class MainJ {
 		//Double x = dp.getAccuracy(dpReadData);
 	
 		System.out.println(dpReadData);
-		System.out.println(dp.test(null));
+		
 		dp.getAccuracy(dpReadData);
 		dp.getPrecision(dpReadData);
 		
