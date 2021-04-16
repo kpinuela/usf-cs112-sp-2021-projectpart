@@ -39,7 +39,7 @@ public class DriverClassKNN {
 		driverData = KNNPredictor.readData("titanic.csv");  
 		driverAcc=KNNPredictor.getAccuracy(driverData)*100;
 		driverPrec=KNNPredictor.getPrecision(driverData)*100;	
-		System.out.println(driverAcc);
+		//System.out.println(driverAcc);
 		
 		
 		SwingUtilities.invokeLater(
