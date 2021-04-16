@@ -1,62 +1,69 @@
 package cs112projectpart;
 
 public class DataPoint {
-	double f1;
-	double f2;
-	String label;
-	Boolean isTrue;
+	private double f1;
+	private double f2;
+	private int label;
+	private Boolean isTest;
 	
 	
-	public DataPoint(double f1, double f2, String label, Boolean isTrue) {
+	public DataPoint(double f1, double f2, int label, Boolean isTest) {
 		
 		this.f1 = f1;
 		this.f2 = f2;
-		this.label = label;
-		this.isTrue = isTrue;
+		this.label = label ;
+		this.isTest = false;
 		
 	}
 	
-	@Override
-	public String toString() {
-		return "DataPoint [f1=" + f1 + ", f2=" + f2 + ", label=" + label + ", isTrue=" + isTrue + "]";
+	public DataPoint () {
+		this.f1 = 0;
+		this.f2 = 0;
+		this.label = 0 ;
+		this.isTest = false;
+		
 	}
 
-	public DataPoint() {
-		this.f1=0;
-		this.f2=0;
-		this.label=null;
-		this.isTrue= null;
-		
-	}
-	
-	
-	
+
 	public double getF1() {
 		return f1;
 	}
+
+
 	public void setF1(double f1) {
 		this.f1 = f1;
 	}
+
+
 	public double getF2() {
 		return f2;
 	}
+
+
 	public void setF2(double f2) {
 		this.f2 = f2;
 	}
-	public String getLabel() {
+
+
+	public int getLabel() {
 		return label;
 	}
-	public void setLabel(String label) {
+
+
+	public void setLabel(int label) {
 		this.label = label;
 	}
-	public Boolean getIsTrue() {
-		return isTrue;
+
+
+	public Boolean getIsTest() {
+		return isTest;
 	}
-	public void setIsTrue(Boolean isTrue) {
-		this.isTrue = isTrue;
-		
-		
+
+
+	public void setIsTest(Boolean isTest) {
+		this.isTest = isTest;
 	}
-	
 
 }
+
+	
