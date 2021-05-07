@@ -199,7 +199,7 @@ public class KNNPredictor extends Predictor {
 	}
 
 	@Override
-	Double getAccuracy(ArrayList<DataPoint> data) {
+	public Double getAccuracy(ArrayList<DataPoint> data) {
 		double truePositive=0.0;
 		double falsePositive=0.0;
 		double trueNegative=0.0;
@@ -243,7 +243,7 @@ public class KNNPredictor extends Predictor {
 	}
 
 	@Override
-	Double getPrecision(ArrayList<DataPoint> data) {
+	public Double getPrecision(ArrayList<DataPoint> data) {
 		double truePositive=0.0;
 		double falsePositive=0.0;
 		double trueNegative=0.0;
