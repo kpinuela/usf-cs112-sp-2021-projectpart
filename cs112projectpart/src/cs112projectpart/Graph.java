@@ -1,5 +1,6 @@
 package cs112projectpart;
 import java.awt.BasicStroke;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -9,6 +10,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +21,7 @@ import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -182,7 +187,14 @@ public class Graph extends JPanel {
         }
 
     }
-
+    public void mouseClicked(MouseEvent e) {
+        int x=e.getX();
+        int y=e.getY();
+        System.out.println(x+","+y);
+    }
+    
+    
+    
     /*
      * @Return the min values
      */
@@ -233,6 +245,7 @@ public class Graph extends JPanel {
     public List<DataPoint> getData() {
         return data;
     }
+    
 
     /*  Run createAndShowGui in the main method, where we create the frame too and pack it in the panel*/
     private static void createAndShowGui(int K, String fileName) {
@@ -246,11 +259,27 @@ public class Graph extends JPanel {
 
         /* creating the frame */
         JFrame frame = new JFrame("CS 112 Lab Part 3");
+        JButton panel = new JButton();
+        
         Container cPane = frame.getContentPane();
         JButton accButt = new JButton("Accuracy: " + String.format("%.2f", acc)+"%");
         JButton precButt = new JButton("Precision: " + String.format("%.2f", prec)+"%");
         cPane.add(accButt, BorderLayout.LINE_START);
         cPane.add(precButt, BorderLayout.LINE_END);
+        JLabel label = new JLabel();
+        frame.add(panel);
+        panel.setLayout(null);
+        cPane.add(label);
+        frame.add(label);
+        cPane.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                label.setText("X: "+x+" \t Y: "+y); 
+                label.setBounds(x, y, label.getText().length()*2, 20);
+            }
+        });
+    
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
