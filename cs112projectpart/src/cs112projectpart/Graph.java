@@ -8,8 +8,11 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -24,8 +27,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
-public class Graph extends JPanel {
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.*;
+public class Graph extends JPanel implements ActionListener {
+	public static int k = 5;
 
     private static final long serialVersionUID = 1L;
     private int labelPadding = 40;
@@ -245,24 +251,65 @@ public class Graph extends JPanel {
     public List<DataPoint> getData() {
         return data;
     }
+    public static void getSliderValue(int k) {
+    	k=(k*2)+1;
+    	createAndShowGui( k ,"titanic.csv");
+    }
     
-
-    /*  Run createAndShowGui in the main method, where we create the frame too and pack it in the panel*/
-    private static void createAndShowGui(int K, String fileName) {
+  
+	private static void createAndShowGui(int K, String fileName) {
 
 
 	    /* Main panel */
         Graph mainPanel = new Graph(K, fileName);
+       
 
         // Feel free to change the size of the panel
-        mainPanel.setPreferredSize(new Dimension(700, 600));
+        mainPanel.setPreferredSize(new Dimension(1700, 1600));
 
         /* creating the frame */
-        JFrame frame = new JFrame("CS 112 Lab Part 3");
-        JButton panel = new JButton();
+        JFrame frame = new JFrame("CS 112 Lab Part 4");
+       
+        JButton testbutt = new JButton("Run Test");
+        
+        mainPanel.add(testbutt);
+       
+       
+        
         
         Container cPane = frame.getContentPane();
-        JButton accButt = new JButton("Accuracy: " + String.format("%.2f", acc)+"%");
+        JLabel accLab = new JLabel("Accuracy: " + String.format("%.2f", acc)+"%");
+        frame.add(accLab);
+        
+        JLabel precLab = new JLabel("Prescision: " + String.format("%.2f", prec)+"%");
+        frame.add(precLab);
+        JLabel majorLab= new JLabel("Choose the majority value");
+        mainPanel.add(majorLab);
+        JSlider slider = new JSlider(JSlider.HORIZONTAL,2,25,5);
+        slider.setMinorTickSpacing(1);
+        slider.setMajorTickSpacing(5);
+        slider.setPaintTicks(true);
+        slider.setSnapToTicks(true);
+        mainPanel.add(slider);
+        testbutt.addActionListener(new ActionListener() {
+
+     			@Override
+     			public void actionPerformed(ActionEvent e) {
+     				getSliderValue(slider.getValue());
+     				// TODO Auto-generated method stub
+     				
+     			}
+
+     	
+             	
+             }
+             );
+             
+     
+        
+
+        
+       /* JButton accButt = new JButton("Accuracy: " + String.format("%.2f", acc)+"%");
         JButton precButt = new JButton("Precision: " + String.format("%.2f", prec)+"%");
         cPane.add(accButt, BorderLayout.LINE_START);
         cPane.add(precButt, BorderLayout.LINE_END);
@@ -279,7 +326,7 @@ public class Graph extends JPanel {
                 label.setBounds(x, y, label.getText().length()*2, 20);
             }
         });
-    
+    */
         
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -287,6 +334,7 @@ public class Graph extends JPanel {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setLayout(new GridLayout( 3,3));
     }
       
     /* The main method runs createAndShowGui*/
@@ -310,4 +358,7 @@ public class Graph extends JPanel {
             }
         });
     }
+
+
+
 }
